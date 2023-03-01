@@ -65,6 +65,14 @@ const populateInitialUsersInEntriesTable = () => {
   users.forEach(addUserToEntriesTable);
 };
 
+const clearForm = () => {
+  nameInput.value = "";
+  emailInput.value = "";
+  passwordInput.value = "";
+  dobInput.value = "";
+  termsInput.checked = false;
+};
+
 const onFormSubmit = (e) => {
   e.preventDefault();
 
@@ -75,6 +83,7 @@ const onFormSubmit = (e) => {
   const user = { name, email, password, dob };
   addUserToLocalStorage(user);
   addUserToEntriesTable(user);
+  clearForm();
 };
 
 setMinMaxForDob();
