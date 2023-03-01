@@ -1,9 +1,11 @@
+const LOCAL_STORAGE_USERS_KEY = "user-entries";
+
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const dobInput = document.getElementById("dob");
 const termsInput = document.getElementById("tac");
-const entriesTable = document.getElementById("entries");
+const entriesTable = document.getElementById("user-entries");
 
 const setMinMaxForDob = () => {
   const today = new Date();
@@ -50,14 +52,16 @@ const addUserToEntriesTable = (user) => {
 };
 
 const addUserToLocalStorage = (user) => {
-  const users = JSON.parse(localStorage.getItem("users") ?? "[]");
+  const users = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_USERS_KEY) ?? "[]"
+  );
   users.push(user);
 
-  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem(LOCAL_STORAGE_USERS_KEY, JSON.stringify(users));
 };
 
 const getUsersFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem("users") ?? "[]");
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_USERS_KEY) ?? "[]");
 };
 
 const populateInitialUsersInEntriesTable = () => {
